@@ -7,7 +7,7 @@
       yum: name=httpd state=present
 
     - name: Amanding webserver configuration file
-      copy: dest=/var/www/html/index.html content="This is my first Web server update2"
+      copy: dest=/var/www/html/index.html content="This is my first Web server With JENKINS"
 
     - name: Starting webserver services
       service: name=httpd state=started
