@@ -1,0 +1,23 @@
+---
+- name: New webserver playbook
+  hosts: ansibleslave
+
+  tasks:
+    - name: update  all packaeges
+      yum: name='*' state=present
+
+    - name: Webserver installation
+      yum: name=httpd state=present
+    
+    - name: Installing wget
+      yum: name=wget state=present
+
+    - name: Downloading Tomcat Birnaries
+      get_url: url=http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.12/bin/apache-tomcat-9.0.12.tar.gz dest=/usr/local
+
+    - name: Extracting Tomcat Directory
+      shell: cd /usr/local; tar -xvf apache-tomcat-9.0.12.tar.gz; mv apache-tomcat-9.0.12 tomcat9; cd tomcat9/bin; chmod 775 startup.sh shutdown.sh catalina.sh; sh startup.sh
+
+    - name: Webservice starting
+      service: name=httpd state=started
+...
