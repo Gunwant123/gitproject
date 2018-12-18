@@ -1,0 +1,9 @@
+---
+- name: New webserver playbook
+  hosts: synqad2dsrv
+
+  tasks:
+    - name: Webserver installation
+      yum: name=httpd state=present
+...
+    
