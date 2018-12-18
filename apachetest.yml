@@ -4,6 +4,6 @@
 
   tasks:
     - name: Webserver installation
-      yum: name=httpd state=present
+      yum: name=httpd state=started
 ...
     
